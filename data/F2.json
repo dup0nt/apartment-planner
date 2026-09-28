@@ -1,0 +1,63 @@
+{
+  "id": "F2",
+  "status": "candidate_not_installation_approved",
+  "furniture": [
+    {
+      "id": "sofa",
+      "x": 2.98,
+      "y": 0.1,
+      "width": 0.95,
+      "depth": 2.2,
+      "height": 0.8,
+      "color": "#c9c0ac"
+    },
+    {
+      "id": "chaise",
+      "x": 2.43,
+      "y": 1.45,
+      "width": 0.55,
+      "depth": 0.85,
+      "height": 0.45,
+      "color": "#c9c0ac"
+    },
+    {
+      "id": "tv_cabinet",
+      "x": 0,
+      "y": 1.05,
+      "width": 0.35,
+      "depth": 1.2,
+      "height": 0.562,
+      "color": "#b89468"
+    },
+    {
+      "id": "dining_table",
+      "x": 2.28,
+      "y": 3.05,
+      "width": 0.9,
+      "depth": 0.9,
+      "height": 0.75,
+      "color": "#987654",
+      "shape": "cylinder"
+    },
+    {
+      "id": "dining_chair_1",
+      "x": 2,
+      "y": 2.53,
+      "width": 0.45,
+      "depth": 0.5,
+      "height": 0.8,
+      "color": "#8b9674"
+    },
+    {
+      "id": "dining_chair_2",
+      "x": 3.16,
+      "y": 2.53,
+      "width": 0.45,
+      "depth": 0.5,
+      "height": 0.8,
+      "color": "#8b9674"
+    }
+  ],
+  "note": "Footprints transcribed from planning candidates. F2 dining circulation is not validated. No speaker model is included.",
+  "sofa_facing": "west"
+}

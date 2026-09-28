@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="880" viewBox="0 0 780 880">
+<rect width="780" height="880" fill="white"/>
+<text x="30" y="30" font-family="sans-serif" font-size="20">J - deterministic 2D / PROVISIONAL</text>
+<polygon points="70.000,80.000 627.200,80.000 627.200,759.000 221.200,759.000 221.200,528.000 70.000,528.000" fill="#eee5d6" stroke="#333"/>
+<rect x="70" y="80" width="140" height="140" fill="#dd5555" fill-opacity=".10" stroke="#b55" stroke-dasharray="5 4"/>
+<rect x="70" y="402.0" width="151.20000000000002" height="126.0" fill="#dd5555" fill-opacity=".10" stroke="#b55" stroke-dasharray="5 4"/>
+<rect x="221.20000000000002" y="633.0" width="406.0" height="126.0" fill="#dd5555" fill-opacity=".10" stroke="#b55" stroke-dasharray="5 4"/>
+<rect x="182.0" y="63.2" width="445.19999999999993" height="16.8" fill="#e1ded4" stroke="#555"/>
+<rect x="53.2" y="80" width="16.8" height="448.0" fill="#e1ded4" stroke="#555"/>
+<rect x="627.2" y="80" width="16.8" height="679.0" fill="#e1ded4" stroke="#555"/>
+<rect x="70" y="528.0" width="27.999999999999993" height="16.8" fill="#e1ded4" stroke="#555"/>
+<rect x="210.0" y="528.0" width="11.20000000000001" height="16.8" fill="#e1ded4" stroke="#555"/>
+<rect x="204.4" y="544.8000000000001" width="16.8" height="214.1999999999999" fill="#e1ded4" stroke="#555"/>
+<rect x="357.0" y="283.0" width="224.0" height="119.0" fill="#c9c0ac" stroke="#555"/>
+<text x="468.99999999999994" y="342.5" text-anchor="middle" font-family="sans-serif" font-size="10">sofa 160x85</text>
+<rect x="329.84000000000003" y="80" width="250.32" height="58.8" fill="#b89468" stroke="#555"/>
+<text x="455.0" y="109.4" text-anchor="middle" font-family="sans-serif" font-size="10">tv_cabinet 179x42</text>
+<rect x="84.0" y="234.0" width="105.0" height="112.0" fill="#567d83" stroke="#555"/>
+<text x="136.5" y="290.0" text-anchor="middle" font-family="sans-serif" font-size="10">reading_chair 75x80</text>
+<rect x="84.0" y="360" width="35.0" height="35.0" fill="#b79654" stroke="#555"/>
+<text x="101.5" y="377.5" text-anchor="middle" font-family="sans-serif" font-size="10">lamp 25x25</text>
+<rect x="389.2" y="507.0" width="126.0" height="126.0" fill="#987654" stroke="#555"/>
+<text x="452.2" y="570.0" text-anchor="middle" font-family="sans-serif" font-size="10">dining_table 90x90</text>
+<rect x="350" y="434.2" width="63.0" height="70.0" fill="#8b9674" stroke="#555"/>
+<text x="381.5" y="469.2" text-anchor="middle" font-family="sans-serif" font-size="10">dining_chair_1 45x50</text>
+<rect x="512.4000000000001" y="434.2" width="63.0" height="70.0" fill="#8b9674" stroke="#555"/>
+<text x="543.9000000000001" y="469.2" text-anchor="middle" font-family="sans-serif" font-size="10">dining_chair_2 45x50</text>
+<polygon points="70.000,80.000 182.000,80.000 181.914,84.397 181.655,88.787 181.224,93.164 180.621,97.521 179.848,101.850 178.905,106.146 177.795,110.401 176.518,114.610 175.077,118.765 173.475,122.861 171.712,126.890 169.793,130.847 167.720,134.726 165.496,138.520 163.125,142.224 160.610,145.832 157.955,149.339 155.165,152.738 152.244,156.026 149.196,159.196 146.026,162.244 142.738,165.165 139.339,167.955 135.832,170.610 132.224,173.125 128.520,175.496 124.726,177.720 120.847,179.793 116.890,181.712 112.861,183.475 108.765,185.077 104.610,186.518 100.401,187.795 96.146,188.905 91.850,189.848 87.521,190.621 83.164,191.224 78.787,191.655 74.397,191.914 70.000,192.000" fill="#bc853b" fill-opacity=".15" stroke="#bc853b"/>
+<polygon points="210.000,528.000 98.000,528.000 98.086,532.397 98.345,536.787 98.776,541.164 99.379,545.521 100.152,549.850 101.095,554.146 102.205,558.401 103.482,562.610 104.923,566.765 106.525,570.861 108.288,574.890 110.207,578.847 112.280,582.726 114.504,586.520 116.875,590.224 119.390,593.832 122.045,597.339 124.835,600.738 127.756,604.026 130.804,607.196 133.974,610.244 137.262,613.165 140.661,615.955 144.168,618.610 147.776,621.125 151.480,623.496 155.274,625.720 159.153,627.793 163.110,629.712 167.139,631.475 171.235,633.077 175.390,634.518 179.599,635.795 183.854,636.905 188.150,637.848 192.479,638.621 196.836,639.224 201.213,639.655 205.603,639.914 210.000,640.000" fill="#bc853b" fill-opacity=".15" stroke="#bc853b"/>
+<line x1="221.20000000000002" y1="759.0" x2="627.2" y2="759.0" stroke="#408db4" stroke-width="5"/>
+<text x="35" y="810" font-family="sans-serif" font-size="13">Blue: glazing aperture; opening mechanism UNKNOWN.</text>
+<text x="35" y="835" font-family="sans-serif" font-size="13">Red: access reserves. Gold: provisional door sweeps. Units: cm on furniture.</text>
+</svg>

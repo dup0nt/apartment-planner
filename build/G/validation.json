@@ -1,0 +1,10 @@
+{
+  "layout": "G",
+  "status": "PROVISIONAL",
+  "errors": [],
+  "warnings": [
+    "Unverified architecture: notch_y, wall_height, wall_thickness, hall, kitchen, glazing.operation",
+    "Static footprint checks only: no certification of chair pull-out, accessibility, acoustics or continuous route width.",
+    "Furniture is represented by external envelopes, not manufacturer models."
+  ]
+}

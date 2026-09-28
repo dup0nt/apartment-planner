@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "units": "metres",
+  "scope": "living_dining_only",
+  "coordinates": "origin upper-left living-room interior; x right, y toward balcony, z up",
+  "source": "references/architect-plan.png",
+  "dimensions": {
+    "width": {
+      "value": 3.98,
+      "status": "read_from_plan"
+    },
+    "length": {
+      "value": 4.85,
+      "status": "read_from_plan"
+    },
+    "balcony_end_width": {
+      "value": 2.9,
+      "status": "read_from_plan"
+    },
+    "notch_x": {
+      "value": 1.08,
+      "status": "derived",
+      "derivation": "3.98 - 2.90"
+    },
+    "notch_y": {
+      "value": 3.2,
+      "status": "assumed",
+      "note": "MUST MEASURE: upper corner to kitchen recess"
+    },
+    "wall_height": {
+      "value": 2.5,
+      "status": "assumed"
+    },
+    "wall_thickness": {
+      "value": 0.12,
+      "status": "assumed"
+    }
+  },
+  "doors": [
+    {
+      "id": "hall",
+      "wall": "north",
+      "hinge": [
+        0,
+        0
+      ],
+      "width": 0.8,
+      "closed_angle_deg": 0,
+      "swing_deg": 90,
+      "status": "assumed",
+      "note": "Location and swing inferred from plan; leaf width unmeasured"
+    },
+    {
+      "id": "kitchen",
+      "wall": "notch_north",
+      "hinge": [
+        1.0,
+        3.2
+      ],
+      "width": 0.8,
+      "closed_angle_deg": 180,
+      "swing_deg": -90,
+      "status": "assumed",
+      "note": "Door swings into kitchen. Hinge offset and width require verification."
+    }
+  ],
+  "glazing": {
+    "wall": "south",
+    "x_start": 1.08,
+    "x_end": 3.98,
+    "sill": 0,
+    "height": 2.2,
+    "status": "assumed",
+    "operation": "unknown",
+    "note": "Opening type, panel count, sill and height unverified; draw aperture only."
+  },
+  "clearance_reserves": [
+    {
+      "id": "hall_reserve",
+      "rect": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "kitchen_reserve",
+      "rect": [
+        0,
+        2.3,
+        1.08,
+        0.9
+      ]
+    },
+    {
+      "id": "balcony_reserve",
+      "rect": [
+        1.08,
+        3.95,
+        2.9,
+        0.9
+      ]
+    }
+  ]
+}
