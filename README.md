@@ -1,3 +1,20 @@
+## Interactive blueprint viewer
+
+Run `python3 serve.py` from this repository, then open http://127.0.0.1:8765/. Use `--port 8766` to change the port or `--open` to open your browser. No npm install, API key, cloud upload or external library is needed. Python serves static files locally; images and project data stay in your browser unless you explicitly save them.
+
+- Upload PNG, JPG or WebP (up to 12 MB and 20 megapixels).
+- Use **Scale**: click both ends of a printed dimension, enter metres and apply. Both axes assumes an undistorted scan; separate X/Y calibration supports stretched references.
+- Use **Wall** to click endpoints, then add **Door** or **Window** openings. Select a wall to move endpoints or edit length, height, thickness and opening properties. Hinge and swing are explicit.
+- **Measure** preserves the original printed label. Amber measurement chips flag disagreement with the calibrated trace; source labels never silently change geometry.
+- Orbit and zoom the synchronized 3D view. Cutaway changes display only. Save a portable JSON project, reopen it, export a 2D SVG or save a 3D image.
+- Optional **Suggest lines** finds ink runs, not recognised walls. It may include text, fixtures and neighbouring apartments. Review every candidate.
+
+The included A–B example is an illustrative manual trace of the corrected uploaded plan, not a verified survey. Its X/Y calibration uses living-room labels 3.98 m and 4.85 m. Other source dimensions disagree with those proportions. Door dimensions/hinges, glazing operation, heights and thicknesses require checking. Balconies and built-in wardrobes are not modelled. The app does not automatically interpret text, partition apartments, rectify perspective or infer missing measurements. Raster tracing alone cannot guarantee exact architecture. 3D geometry is reproducible from saved JSON; screenshot pixels may differ between GPUs.
+
+The viewer uses `web/demo.json` / `web/demo-image.js` as a separate pixel-space example. The legacy metre-space planner below remains unchanged. `web/demo-image.js` is the JSON project wrapped as `window.BLUEPRINT_DEMO=<JSON>;` for dependency-free browser loading. Keep both demo representations synchronized.
+
+Validation: Python 3.11+ and Node.js are required for `python3 check.py`. Set `NODE_BINARY` if Node is outside PATH. This runs governance, legacy geometry and interactive geometry tests.
+
 # Deterministic apartment planner
 
 A local, dependency-free Python 3 repository. One explicit geometry source drives a labelled 2D SVG, interactive 3D HTML viewer and real 3D OBJ mesh. No AI image generation, external CDN, API key or randomness. Same inputs and program version produce byte-identical files (tested).

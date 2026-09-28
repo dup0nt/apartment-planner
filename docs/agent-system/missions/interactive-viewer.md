@@ -1,0 +1,13 @@
+# Interactive blueprint viewer mission
+User authorizes local interactive upload, exact-line tracing, calibration, dimension overlays and synchronized 3D. Root integrates UI/server/documentation; geometry specialist owns web/geometry.js and Node tests; rendering specialist owns web/renderer3d.js; fresh assurance reviews raw changes. No cloud upload or deployment. Network libraries not needed.
+
+New bounded contract blueprint-project-v1: pixel-space editable source traces plus explicit x/y metres-per-pixel calibration and evidence. Reference raster remains visible. This is not automatic exact reconstruction. Legacy planner JSON/CLI stays unchanged. Demo uses corrected supplied blueprint with clearly marked manually traced lines and original dimension labels. Unknown dimensions and measurements that disagree with calibration are disclosed.
+
+Acceptance: local PNG/JPEG/WebP upload; reference image preserved; calibrate two chosen points to entered metres (uniform or X/Y); draw/select/move/delete wall endpoints; measured/labelled dimensions; door/window insertion with hinge/swing controls; height/thickness editing; live orbit/zoom 3D; undo/redo; JSON import/export including image; image/malformed JSON rejection; unit-tested transforms/opening cuts/export roundtrip; browser interaction checks; full native checks and independent review. Reproducible geometric data, not deterministic screenshot rasterization across GPUs.
+
+Geometry and rendering use explicit contract in contracts/blueprint-project.md. No existing assumption is promoted. Publication/procurement not in scope.
+
+## Delivery evidence
+Implemented dependency-free local editor and server. Browser-verified upload, wall insertion, door insertion, undo/redo, calibration, cutaway, image export, SVG export, JSON save/reopen equality and malformed-project rejection. Desktop and narrow-screen visuals inspected. Integrated checks pass: 16 Python tests plus 8 Node tests. Independent reviewer /root/viewer_review covered geometry, rendering and assurance; no remaining required findings. Its SVG door-swing omission finding was corrected and rechecked (7 doors, 14 leaf/swing polylines). Escape rollback verified; rejected numeric edits now restore inspector state.
+
+Limitations: manual reference trace, not surveyed architecture or automatic OCR reconstruction. Example deliberately exposes conflicting printed dimensions. Heights/thickness/opening details illustrative; balcony outlines and wardrobes omitted. Subagents delivered geometry/renderer; root completed demo, server and docs after subagent usage limit. No cloud publication. Browser smoke scripts/screenshots are task-workspace evidence rather than runtime dependencies.

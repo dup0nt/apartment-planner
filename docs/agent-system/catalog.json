@@ -57,7 +57,10 @@
       "paths": [
         "data/**",
         "planner.py",
-        "references/**"
+        "references/**",
+        "web/geometry.js",
+        "web/demo.json",
+        "web/demo-image.js"
       ],
       "primary_team": "geometry",
       "review_rules": [
@@ -74,7 +77,12 @@
       "id": "rendering",
       "paths": [
         "viewer-template.html",
-        "build/**"
+        "build/**",
+        "web/index.html",
+        "web/app.js",
+        "web/styles.css",
+        "web/renderer3d.js",
+        "serve.py"
       ],
       "primary_team": "rendering",
       "review_rules": [
@@ -198,6 +206,13 @@
       "consumer": "rendering",
       "capability": "geometry",
       "path": "docs/agent-system/contracts/resolved-geometry.md"
+    },
+    {
+      "id": "blueprint-project-v1",
+      "steward": "geometry",
+      "consumer": "rendering",
+      "capability": "geometry",
+      "path": "docs/agent-system/contracts/blueprint-project.md"
     }
   ],
   "required_artifacts": [
