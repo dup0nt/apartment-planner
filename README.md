@@ -57,3 +57,15 @@ The implemented geometry is the living/dining room, for layouts E/F/F2/G/H/J. Th
 ## Reproducibility
 
 No timestamps are inserted. Generated artifacts contain fixed float formatting or stable JSON ordering. Interactive camera changes affect only the displayed view, not the geometry or stored files. Keep JSON inputs and generator together in Git; review diffs before rebuilding. The included first commit provides a reproducible baseline, not a claim of surveyed accuracy.
+
+## Agent collaboration and full checks
+
+The repository has a small [agent operating model](docs/agent-system/README.md): geometry, rendering and read-only independent assurance. [AGENTS.md](AGENTS.md) is the concise router; [catalog.json](docs/agent-system/catalog.json) owns review routing. This does not change existing geometry or add an orchestration runtime.
+
+With Python 3.11 or newer, run all product and governance checks:
+
+```sh
+python3 check.py
+```
+
+The renderer retains its existing Python requirements; Python 3.11 is needed only for standard-library TOML validation of agent profiles.

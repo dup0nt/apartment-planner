@@ -1,0 +1,216 @@
+{
+  "schema_version": "agent-team-catalog.v1",
+  "project": "Apartment Planner",
+  "human_owner": "Diogo Goncalves",
+  "review_triggers": [
+    "always",
+    "contract_change"
+  ],
+  "dynamic_reviewers": [],
+  "local_instructions": [
+    "AGENTS.md"
+  ],
+  "teams": [
+    {
+      "id": "geometry",
+      "charter": "teams/geometry.md",
+      "agent": ".codex/agents/geometry.toml",
+      "agent_name": "geometry_planner",
+      "sandbox_mode": "workspace-write",
+      "independent_review": false
+    },
+    {
+      "id": "rendering",
+      "charter": "teams/rendering.md",
+      "agent": ".codex/agents/rendering.toml",
+      "agent_name": "rendering_engineer",
+      "sandbox_mode": "workspace-write",
+      "independent_review": false
+    },
+    {
+      "id": "assurance",
+      "charter": "teams/assurance.md",
+      "agent": ".codex/agents/assurance.toml",
+      "agent_name": "independent_reviewer",
+      "sandbox_mode": "read-only",
+      "independent_review": true
+    }
+  ],
+  "coordination_agents": [],
+  "capabilities": [
+    {
+      "id": "geometry",
+      "team": "geometry"
+    },
+    {
+      "id": "rendering",
+      "team": "rendering"
+    },
+    {
+      "id": "assurance",
+      "team": "assurance"
+    }
+  ],
+  "path_ownership": [
+    {
+      "id": "geometry",
+      "paths": [
+        "data/**",
+        "planner.py",
+        "references/**"
+      ],
+      "primary_team": "geometry",
+      "review_rules": [
+        {
+          "when": "always",
+          "reviewers": [
+            "assurance",
+            "rendering"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rendering",
+      "paths": [
+        "viewer-template.html",
+        "build/**"
+      ],
+      "primary_team": "rendering",
+      "review_rules": [
+        {
+          "when": "always",
+          "reviewers": [
+            "assurance",
+            "geometry"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "verification",
+      "paths": [
+        "tests/**"
+      ],
+      "primary_team": "assurance",
+      "review_rules": [
+        {
+          "when": "always",
+          "reviewers": [
+            "geometry",
+            "rendering"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "governance",
+      "paths": [
+        "AGENTS.md",
+        ".codex/**",
+        "docs/agent-system/**",
+        "tools/agent_governance/**",
+        "check.py"
+      ],
+      "primary_team": "geometry",
+      "review_rules": [
+        {
+          "when": "always",
+          "reviewers": [
+            "assurance",
+            "rendering"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "documentation",
+      "paths": [
+        "README.md",
+        ".gitignore"
+      ],
+      "primary_team": "geometry",
+      "review_rules": [
+        {
+          "when": "always",
+          "reviewers": [
+            "assurance"
+          ]
+        }
+      ]
+    }
+  ],
+  "routing_fixtures": [
+    {
+      "route": "geometry",
+      "path": "data/architecture.json",
+      "triggers": [],
+      "primary_team": "geometry",
+      "reviewers": [
+        "assurance",
+        "rendering"
+      ]
+    },
+    {
+      "route": "rendering",
+      "path": "viewer-template.html",
+      "triggers": [],
+      "primary_team": "rendering",
+      "reviewers": [
+        "assurance",
+        "geometry"
+      ]
+    },
+    {
+      "route": "verification",
+      "path": "tests/test_planner.py",
+      "triggers": [],
+      "primary_team": "assurance",
+      "reviewers": [
+        "geometry",
+        "rendering"
+      ]
+    },
+    {
+      "route": "governance",
+      "path": "docs/agent-system/permissions.md",
+      "triggers": [],
+      "primary_team": "geometry",
+      "reviewers": [
+        "assurance",
+        "rendering"
+      ]
+    },
+    {
+      "route": "documentation",
+      "path": "README.md",
+      "triggers": [],
+      "primary_team": "geometry",
+      "reviewers": [
+        "assurance"
+      ]
+    }
+  ],
+  "contracts": [
+    {
+      "id": "resolved-geometry-v1",
+      "steward": "geometry",
+      "consumer": "rendering",
+      "capability": "geometry",
+      "path": "docs/agent-system/contracts/resolved-geometry.md"
+    }
+  ],
+  "required_artifacts": [
+    "AGENTS.md",
+    ".codex/config.toml",
+    "docs/agent-system/README.md",
+    "docs/agent-system/constitution.md",
+    "docs/agent-system/interactions.md",
+    "docs/agent-system/ownership.md",
+    "docs/agent-system/decision-rights.md",
+    "docs/agent-system/permissions.md",
+    "docs/agent-system/definition-of-done.md",
+    "docs/agent-system/decision-status.md",
+    "docs/agent-system/evaluation.md"
+  ]
+}
