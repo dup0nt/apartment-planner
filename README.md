@@ -86,3 +86,10 @@ python3 check.py
 ```
 
 The renderer retains its existing Python requirements; Python 3.11 is needed only for standard-library TOML validation of agent profiles.
+
+### Arrange furniture
+The furniture bar adds **Straight sofa**, **Sofa + chaise**, **TV** and **TV unit**. Choose one, then click the blueprint. With Select active, drag a piece in 2D and see its 3D position update. Select it to edit overall width, depth, height and bottom elevation in centimetres; rotate with the button, degree field or `R` key. The chaise has left/right placement, width and total depth controls. Left/right refers to the unrotated plan, where the sofa faces downward.
+
+Sofas include arms, back, seat cushions and legs; chaise sofas have an actual L footprint. TVs include a thin screen and stand; cabinets include fronts, top and legs. These are schematic shapes, not exact product models. Furniture chips beneath the inspector select overlapping pieces and focus the plan. Use Focus in 3D to inspect the selected piece; Reset view shows the whole model. Save/open project, undo/redo and 2D/3D exports include the furniture. Old project files load without furniture. Clear traces leaves furniture intact; use Delete selected to remove pieces.
+
+Furniture can overlap walls or doors: inspect clearances before trusting a layout. Uploaded-plan calibration also controls its apparent size relative to architecture. TV bottom elevation can be set to the cabinet height; the two pieces remain independently movable.

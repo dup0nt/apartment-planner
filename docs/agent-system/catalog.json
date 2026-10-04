@@ -60,7 +60,8 @@
         "references/**",
         "web/geometry.js",
         "web/demo.json",
-        "web/demo-image.js"
+        "web/demo-image.js",
+        "web/furniture.js"
       ],
       "primary_team": "geometry",
       "review_rules": [

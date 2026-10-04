@@ -9,5 +9,5 @@ for command in [[sys.executable,'tools/agent_governance/validate_agent_system.py
  subprocess.run(command,cwd=ROOT,check=True)
 node=os.environ.get('NODE_BINARY') or shutil.which('node')
 if not node: raise SystemExit('Node.js is required for viewer tests. Install Node or set NODE_BINARY to its executable.')
-subprocess.run([node,'--test','tests/test_blueprint_geometry.cjs'],cwd=ROOT,check=True)
+subprocess.run([node,'--test',*map(str,sorted((ROOT/'tests').glob('test_*.cjs')))],cwd=ROOT,check=True)
 print('All local governance and product checks passed. Geometry remains PROVISIONAL.')

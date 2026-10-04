@@ -57,9 +57,10 @@
       const b={minX:Infinity,minY:Infinity,maxX:-Infinity,maxY:-Infinity,maxZ:0};
       for(const mesh of this.meshes)for(const p of mesh.vertices||[])if(p.length>=3&&p.every(Number.isFinite)){b.minX=Math.min(b.minX,p[0]);b.maxX=Math.max(b.maxX,p[0]);b.minY=Math.min(b.minY,p[1]);b.maxY=Math.max(b.maxY,p[1]);b.maxZ=Math.max(b.maxZ,p[2]);}
       if(!Number.isFinite(b.minX)){b.minX=0;b.minY=0;b.maxX=options.bounds?.width||10;b.maxY=options.bounds?.height||10;}
-      const first=!this.hadScene,previousSpan=this.span||1;this.bounds=b;this.span=Math.max(b.maxX-b.minX,b.maxY-b.minY,b.maxZ,1);this.target=[(b.minX+b.maxX)/2,(b.minY+b.maxY)/2,b.maxZ*.17];
-      if(first){this.reset();this.hadScene=this.meshes.length>0;}else{this.distance*=this.span/previousSpan;}this.render();
+      const first=!this.hadScene,previousSpan=this.span||1;this.bounds=b;this.span=Math.max(b.maxX-b.minX,b.maxY-b.minY,b.maxZ,1);if(!options.preserveCamera)this.target=[(b.minX+b.maxX)/2,(b.minY+b.maxY)/2,b.maxZ*.17];
+      if(first){this.reset();this.hadScene=this.meshes.length>0;}else if(!options.preserveCamera){this.distance*=this.span/previousSpan;}this.render();
     }
+    focus(x,y,size){this.target=[x,y,.35];this.distance=Math.max(2.5,size*2.5);this.render();}
     reset(){const b=this.bounds;this.span=Math.max(b.maxX-b.minX,b.maxY-b.minY,b.maxZ,1);this.target=[(b.minX+b.maxX)/2,(b.minY+b.maxY)/2,b.maxZ*.17];this.yaw=-Math.PI*.65;this.pitch=.88;this.distance=this.span*1.65;this.render();}
     setCutaway(value){this.cutaway=Boolean(value);this.render();}
     resize(){if(this.destroyed)return;const r=this.canvas.getBoundingClientRect();this.width=Math.max(1,r.width);this.height=Math.max(1,r.height);const dpr=Math.min(global.devicePixelRatio||1,2);const w=Math.round(this.width*dpr),h=Math.round(this.height*dpr);if(this.canvas.width!==w||this.canvas.height!==h){this.canvas.width=w;this.canvas.height=h;}this.overlay.width=w;this.overlay.height=h;this.dpr=dpr;this.render();}
