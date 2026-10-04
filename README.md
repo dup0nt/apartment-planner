@@ -95,3 +95,10 @@ Sofas include arms, back, seat cushions and legs; chaise sofas have an actual L 
 Furniture can overlap walls or doors: inspect clearances before trusting a layout. Uploaded-plan calibration also controls its apparent size relative to architecture. TV bottom elevation can be set to the cabinet height; the two pieces remain independently movable.
 
 Furniture defaults: both sofa shapes use a 210 × 110 cm base; the chaise retains an adjustable illustrative 160 cm total depth. TV: 55-inch 16:9 visible screen, schematic bezel/stand, bottom elevation 56 cm. TV unit: 179 × 42 × 56 cm. Existing placed/saved furniture retains its custom dimensions. Sofa height remains illustrative at 84 cm.
+
+### Focus on rooms
+In **Room focus**, select one or several rooms, enable **Hide other rooms**, then choose **Focus selected**. Both the blueprint and 3D view isolate the selection, including the living room's recess. **Show all** restores the whole plan. Select all six apartment rooms to mask the neighbouring apartment in the source image.
+
+The supplied A–B example includes living/dining, kitchen, hall, bathroom and two bedroom regions. These are manually outlined view masks. For a different upload, choose **Outline room**, click each boundary corner, enter a name in the inspector and choose **Finish room**. Use Edit to rename a region, or Delete selected and redraw to change its outline. Room definitions and selection save with the project. Old saved projects remain compatible.
+
+Hiding rooms does not delete architecture or furniture. Shared walls extending outside the selection must be edited in Show all. Masked exports include only the selected view; JSON always retains the whole project. Room masks cut existing surfaces without adding cap faces; this is a viewing effect, not a remodel.

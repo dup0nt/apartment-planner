@@ -481,5 +481,151 @@
       "metres": 1.96
     }
   ],
-  "notes": "Manual illustrative trace of the right A\u2013B apartment. Living-room labels 3.98 / 4.85 set X/Y scale. Source proportions do not agree with every printed dimension: amber labels flag discrepancies. Door positions, hinges, window operation, wall heights/thickness and sills require verification. This is not a survey or a confirmed architectural model. Room labels: SALA 17.70 m\u00b2; COZINHA 7.30 m\u00b2; HALL 5.00 m\u00b2; W.C. 3.80 m\u00b2; QUARTO 13.50 and 12.70 m\u00b2. Balcony outlines and built-in wardrobes are not modelled."
+  "notes": "Manual illustrative trace of the right A\u2013B apartment. Living-room labels 3.98 / 4.85 set X/Y scale. Source proportions do not agree with every printed dimension: amber labels flag discrepancies. Door positions, hinges, window operation, wall heights/thickness and sills require verification. This is not a survey or a confirmed architectural model. Room labels: SALA 17.70 m\u00b2; COZINHA 7.30 m\u00b2; HALL 5.00 m\u00b2; W.C. 3.80 m\u00b2; QUARTO 13.50 and 12.70 m\u00b2. Balcony outlines and built-in wardrobes are not modelled.",
+  "rooms": [
+    {
+      "id": "room-living",
+      "name": "Living / dining",
+      "points": [
+        {
+          "x": 645,
+          "y": 727
+        },
+        {
+          "x": 950,
+          "y": 727
+        },
+        {
+          "x": 950,
+          "y": 1045
+        },
+        {
+          "x": 718,
+          "y": 1045
+        },
+        {
+          "x": 718,
+          "y": 940
+        },
+        {
+          "x": 645,
+          "y": 940
+        }
+      ]
+    },
+    {
+      "id": "room-kitchen",
+      "name": "Kitchen",
+      "points": [
+        {
+          "x": 538,
+          "y": 940
+        },
+        {
+          "x": 718,
+          "y": 940
+        },
+        {
+          "x": 718,
+          "y": 1141
+        },
+        {
+          "x": 538,
+          "y": 1141
+        }
+      ]
+    },
+    {
+      "id": "room-hall",
+      "name": "Hall",
+      "points": [
+        {
+          "x": 645,
+          "y": 560
+        },
+        {
+          "x": 778,
+          "y": 560
+        },
+        {
+          "x": 778,
+          "y": 727
+        },
+        {
+          "x": 645,
+          "y": 727
+        }
+      ]
+    },
+    {
+      "id": "room-bath",
+      "name": "Bathroom",
+      "points": [
+        {
+          "x": 778,
+          "y": 590
+        },
+        {
+          "x": 950,
+          "y": 590
+        },
+        {
+          "x": 950,
+          "y": 727
+        },
+        {
+          "x": 778,
+          "y": 727
+        }
+      ]
+    },
+    {
+      "id": "room-bedroom-1",
+      "name": "Bedroom 1 \u00b7 13.50 m\u00b2",
+      "points": [
+        {
+          "x": 538,
+          "y": 230
+        },
+        {
+          "x": 718,
+          "y": 230
+        },
+        {
+          "x": 718,
+          "y": 560
+        },
+        {
+          "x": 538,
+          "y": 560
+        }
+      ]
+    },
+    {
+      "id": "room-bedroom-2",
+      "name": "Bedroom 2 \u00b7 12.70 m\u00b2",
+      "points": [
+        {
+          "x": 718,
+          "y": 299
+        },
+        {
+          "x": 950,
+          "y": 299
+        },
+        {
+          "x": 950,
+          "y": 560
+        },
+        {
+          "x": 718,
+          "y": 560
+        }
+      ]
+    }
+  ],
+  "roomView": {
+    "selectedRoomIds": [],
+    "hideOthers": false
+  }
 }
