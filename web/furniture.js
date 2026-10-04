@@ -4,10 +4,12 @@
   const TYPES=['sofa','sofa-l','tv','tv-unit'];
   const finite=v=>typeof v==='number'&&Number.isFinite(v);
   function defaults(type,id,position){
-    const sizes={sofa:[2.1,.9,.84],'sofa-l':[2.4,.95,.84],tv:[1.23,.26,.78],'tv-unit':[1.8,.4,.5]};
+    // 55-inch, 16:9 visible screen; compensate for the schematic bezel and stand below.
+    const diagonal=55*.0254, screenWidth=diagonal*16/Math.hypot(16,9), screenHeight=diagonal*9/Math.hypot(16,9);
+    const sizes={sofa:[2.1,1.1,.84],'sofa-l':[2.1,1.1,.84],tv:[screenWidth/.962,.26,screenHeight/(.87*.94)],'tv-unit':[1.79,.42,.56]};
     if(!sizes[type])throw new Error('Unknown furniture type.');
     const [width,depth,height]=sizes[type];
-    return {id,type,position:{x:position.x,y:position.y},rotation:0,width,depth,height,elevation:type==='tv'?.5:0,color:type==='tv'?'#30383b':type==='tv-unit'?'#ad855b':'#b9b19c',...(type==='sofa-l'?{chaiseDepth:1.6,chaiseWidth:.85,chaiseSide:'left'}:{})};
+    return {id,type,position:{x:position.x,y:position.y},rotation:0,width,depth,height,elevation:type==='tv'?.56:0,color:type==='tv'?'#30383b':type==='tv-unit'?'#ad855b':'#b9b19c',...(type==='sofa-l'?{chaiseDepth:1.6,chaiseWidth:.85,chaiseSide:'left'}:{})};
   }
   function validate(items,scale,existingIds=[]){
     const errors=[];if(items===undefined)return errors;
