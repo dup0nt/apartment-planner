@@ -114,3 +114,12 @@ Saved rulers appear in both views, measurement chips and exports, support undo/d
 Choose **Export for AI**, name the arrangement (for example `Option A — sofa near window`) and download the review PNG. It combines the current room scope in 2D, the current 3D camera, numbered furniture, overall dimensions, positions, source measurements/rulers and accuracy notes. Mirrored 3D is explicitly labelled; use 2D for orientation. Overlapping furniture anchors share a number badge (for example TV and its cabinet).
 
 Use **Download exact JSON** alongside the PNG when asking an AI to compare alternatives. JSON includes the full project and review metadata; positions remain exact source pixels with X/Y metre conversion. PNG lists at most40 furniture items and30 measurements, with explicit overflow notes; JSON retains all. The PNG is not proof of measured clearances. Export each arrangement under a distinct name, then supply the images (and ideally JSON files) together. Nothing is sent to an AI automatically. Saving an AI export does not mark the editable project as saved.
+
+### More furniture
+The library includes dining chairs, round tables, rectangular tables with rounded corners, bookshelves and beds. All support dragging, rotation, colour, metric resizing, duplication, saved projects and AI exports. Use Duplicate for additional chairs. Table shape can switch in the inspector; round tables have a single Diameter control. Bookshelves have an adjustable count of vertical compartments. Bed height includes the headboard.
+
+New starting sizes (W × D × H): chair50×55×82cm; round table110cm diameter×75cm high; rounded rectangular table140×80×75cm; bookshelf80×30×200cm; bed150×200×100cm. These are editable starting points, not room-fit recommendations. Chairs need separate pull-out clearance; bedheadboard and shelf details are schematic.
+
+Living-room glazing is floor-to-ceiling following the user correction; its absolute height uses the provisional wall height. The original demo and legacy metre-space data match. Reopening a saved demo with the exact former living-window defaults (85cm sill,130cm high) upgrades only that opening and marks the project unsaved; custom opening dimensions stay intact. Other windows can use Make floor-to-ceiling in their inspector.
+
+After drawing a ruler, Select mode activates automatically. Click its line or label to select it, then use Delete ruler above the plan, Delete selected, or the keyboard Delete key. Undo restores it.

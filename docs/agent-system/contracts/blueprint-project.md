@@ -37,3 +37,6 @@ Masks are view-only. Canvas and SVG clip to selected-region union; 3D clips exis
 
 ## Derived ruler dimensions
 An optional `kind:"ruler"` on a dimension marks a derived fixed-point measurement; `metres:null` avoids treating it as a source constraint. UI and exports calculate its displayed length from endpoints and current X/Y scale. Saved endpoints do not follow furniture or future wall edits. Ruler projection uses the metric direction of a chosen wall or its perpendicular, preserving physical alignment under anisotropic scaling. Source dimensions retain their existing labels/semantics.
+
+## Additional furniture types
+Furniture also accepts `chair`, `table-round`, `table-rounded`, `bookshelf`, and `bed`. Round tables require equal metric width/depth; the UI edits one diameter. Rounded table corners and circular tops use sampled convex outlines shared by hit testing, 2D/SVG and 3D extrusion. `bookshelf.shelfCount` is optional (default5), integer2–10, counting vertical compartments (base/top plus intermediate shelf boards). Bed width/depth are the complete footprint; height includes its headboard. Detailed furniture remains schematic and does not reserve circulation or chair pull-out space.

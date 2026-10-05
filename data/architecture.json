@@ -69,10 +69,10 @@
     "x_start": 1.08,
     "x_end": 3.98,
     "sill": 0,
-    "height": 2.2,
+    "height": 2.5,
     "status": "assumed",
     "operation": "unknown",
-    "note": "Opening type, panel count, sill and height unverified; draw aperture only."
+    "note": "Floor-to-ceiling extent confirmed by user; absolute height follows assumed 2.50 m wall height. Panel count and operation remain unverified."
   },
   "clearance_reserves": [
     {
