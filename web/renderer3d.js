@@ -16,7 +16,7 @@
   }
   class Blueprint3D {
     constructor(canvas) {
-      this.canvas=canvas; this.meshes=[]; this.dimensions=[]; this.cutaway=false;
+      this.canvas=canvas; this.meshes=[]; this.dimensions=[]; this.cutaway=false; this.mirrored=true;
       this.bounds={minX:0,minY:0,maxX:10,maxY:10,maxZ:2.5}; this.listeners=[];
       this.canvas.style.touchAction='none'; this.canvas.style.cursor='grab';
       this.canvas.setAttribute('aria-label','Interactive 3D model. Drag to orbit, scroll to zoom. Arrow keys orbit, plus and minus zoom, Home resets.');
@@ -62,10 +62,11 @@
     }
     focus(x,y,size){this.target=[x,y,.35];this.distance=Math.max(2.5,size*2.5);this.render();}
     reset(){const b=this.bounds;this.span=Math.max(b.maxX-b.minX,b.maxY-b.minY,b.maxZ,1);this.target=[(b.minX+b.maxX)/2,(b.minY+b.maxY)/2,b.maxZ*.17];this.yaw=-Math.PI*.65;this.pitch=.88;this.distance=this.span*1.65;this.render();}
+    setMirrored(value){this.mirrored=Boolean(value);this.render();}
     setCutaway(value){this.cutaway=Boolean(value);this.render();}
     resize(){if(this.destroyed)return;const r=this.canvas.getBoundingClientRect();this.width=Math.max(1,r.width);this.height=Math.max(1,r.height);const dpr=Math.min(global.devicePixelRatio||1,2);const w=Math.round(this.width*dpr),h=Math.round(this.height*dpr);if(this.canvas.width!==w||this.canvas.height!==h){this.canvas.width=w;this.canvas.height=h;}this.overlay.width=w;this.overlay.height=h;this.dpr=dpr;this.render();}
     camera(){
-      const t=this.target, cp=Math.cos(this.pitch);this.eye=[t[0]+Math.cos(this.yaw)*cp*this.distance,t[1]+Math.sin(this.yaw)*cp*this.distance,t[2]+Math.sin(this.pitch)*this.distance];this.forward=unit(sub(t,this.eye));this.right=unit(cross(this.forward,[0,0,1]));this.up=cross(this.right,this.forward);
+      const t=this.target, cp=Math.cos(this.pitch);this.eye=[t[0]+Math.cos(this.yaw)*cp*this.distance,t[1]+Math.sin(this.yaw)*cp*this.distance,t[2]+Math.sin(this.pitch)*this.distance];this.forward=unit(sub(t,this.eye));this.right=unit(cross(this.forward,[0,0,1]));this.up=cross(this.right,this.forward);if(this.mirrored)this.right=this.right.map(v=>-v);
     }
     project(p){const q=sub(p,this.eye),d=dot(q,this.forward);if(d<=.02)return null;return {x:this.width/2+dot(q,this.right)*1.9/d*this.height/2,y:this.height/2-dot(q,this.up)*1.9/d*this.height/2};}
     render(){

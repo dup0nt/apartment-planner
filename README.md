@@ -102,3 +102,5 @@ In **Room focus**, select one or several rooms, enable **Hide other rooms**, the
 The supplied A–B example includes living/dining, kitchen, hall, bathroom and two bedroom regions. These are manually outlined view masks. For a different upload, choose **Outline room**, click each boundary corner, enter a name in the inspector and choose **Finish room**. Use Edit to rename a region, or Delete selected and redraw to change its outline. Room definitions and selection save with the project. Old saved projects remain compatible.
 
 Hiding rooms does not delete architecture or furniture. Shared walls extending outside the selection must be edited in Show all. Masked exports include only the selected view; JSON always retains the whole project. Room masks cut existing surfaces without adding cap faces; this is a viewing effect, not a remodel.
+
+The 3D view starts horizontally mirrored. Toggle **Mirror view** to switch back. This changes camera projection only; architecture, door hinges, furniture and 2D coordinates stay unchanged. Measurement text remains readable and saved 3D images match the view.
