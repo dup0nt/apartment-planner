@@ -70,3 +70,8 @@ test('ink suggestions deterministic and bounded',()=>{
   const result=G.suggestWalls(image);assert.deepEqual(result,[{a:{x:10,y:20},b:{x:89,y:20}}]);
   assert.deepEqual(G.suggestWalls(image),result);assert.deepEqual(G.suggestWalls(image,{limit:0}),[]);
 });
+
+test('ruler aligns in world metres with rotated walls and anisotropic pixels',()=>{
+ const scale={x:.02,y:.01},wall={a:{x:0,y:0},b:{x:100,y:100}},a={x:10,y:20},p={x:160,y:90};
+ for(const mode of ['parallel','perpendicular','auto']){const b=G.alignRuler(a,p,wall,scale,mode),dx=(b.x-a.x)*scale.x,dy=(b.y-a.y)*scale.y;if(mode==='perpendicular')assert.ok(Math.abs(dx*2+dy)<1e-9);else assert.ok(Math.abs(dx-dy*2)<1e-9);}
+});

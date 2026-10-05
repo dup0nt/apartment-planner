@@ -104,3 +104,8 @@ The supplied A–B example includes living/dining, kitchen, hall, bathroom and t
 Hiding rooms does not delete architecture or furniture. Shared walls extending outside the selection must be edited in Show all. Masked exports include only the selected view; JSON always retains the whole project. Room masks cut existing surfaces without adding cap faces; this is a viewing effect, not a remodel.
 
 The 3D view starts horizontally mirrored. Toggle **Mirror view** to switch back. This changes camera projection only; architecture, door hinges, furniture and 2D coordinates stay unchanged. Measurement text remains readable and saved 3D images match the view.
+
+### Wall-aligned ruler
+Choose **Ruler**, click the start point and move toward the endpoint to see the live distance in metres and centimetres. Click again to save. Alignment follows the nearest wall automatically, or the wall selected before activating Ruler. The inspector can choose another reference wall, plan axes, parallel only or perpendicular only. Alignment is calculated in metres, including with stretched X/Y calibration. Click the sofa front and TV screen plane to measure that gap; choose an eye-position point if measuring viewing distance instead.
+
+Saved rulers appear in both views, measurement chips and exports, support undo/delete and persist in JSON. They are derived distances, separate from transcribed source labels. Their endpoints are fixed points, not attached to furniture; remeasure after moving pieces. Accuracy depends on calibration and where you click. Rulers cannot cross hidden rooms while masking is active.

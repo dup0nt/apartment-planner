@@ -149,5 +149,11 @@
     return candidates.slice(0,limit).map(convert);
     function convert(v) {return v.vertical?{a:{x:v.c,y:v.start},b:{x:v.c,y:v.end}}:{a:{x:v.start,y:v.c},b:{x:v.end,y:v.c}};}
   }
-  return {validateProject,wallLength,pixelToWorld,projectToMeshes,suggestWalls};
+  function alignRuler(a,p,wall,scale,mode='auto') {
+    const dx=(wall.b.x-wall.a.x)*scale.x,dy=(wall.b.y-wall.a.y)*scale.y,L=Math.hypot(dx,dy),ux=dx/L,uy=dy/L;
+    const vx=(p.x-a.x)*scale.x,vy=(p.y-a.y)*scale.y,along=vx*ux+vy*uy,across=-vx*uy+vy*ux;
+    const parallel=mode==='parallel'||(mode==='auto'&&Math.abs(along)>=Math.abs(across));
+    return parallel?{x:a.x+along*ux/scale.x,y:a.y+along*uy/scale.y}:{x:a.x-across*uy/scale.x,y:a.y+across*ux/scale.y};
+  }
+  return {validateProject,wallLength,pixelToWorld,projectToMeshes,suggestWalls,alignRuler};
 });
