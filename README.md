@@ -123,3 +123,45 @@ New starting sizes (W × D × H): chair50×55×82cm; round table110cm diameter×
 Living-room glazing is floor-to-ceiling following the user correction; its absolute height uses the provisional wall height. The original demo and legacy metre-space data match. Reopening a saved demo with the exact former living-window defaults (85cm sill,130cm high) upgrades only that opening and marks the project unsaved; custom opening dimensions stay intact. Other windows can use Make floor-to-ceiling in their inspector.
 
 After drawing a ruler, Select mode activates automatically. Click its line or label to select it, then use Delete ruler above the plan, Delete selected, or the keyboard Delete key. Undo restores it.
+
+## Product roadmap: furniture inventory and layout worksheets
+
+Planned work, not implemented. Capture reusable furniture once, then place it in different layout worksheets to compare arrangements. Start with editable dimensions; import product URLs next; exact product shapes come later.
+
+### 1. Reusable furniture inventory
+
+Add an inventory separate from the furniture already placed on a plan. Create entries manually with a name, category, overall width/depth/height (or diameter for a round table), optional colour/finish, product URL and selected product variant. Store dimensions in metres internally and edit them in centimetres in the UI. Keep missing values explicitly unknown; incomplete entries can be saved as drafts but need usable footprint dimensions before placement. Any schematic height or shape must be labelled as an assumption.
+
+Users can edit, duplicate and remove inventory entries. A furniture browser shows searchable/filterable cards with names, dimensions, finishes and import/review status. Choose a card and click the plan to place it; dragging a card onto the plan can follow. Placed items retain a link to their inventory entry plus a snapshot of its dimensions and finish. Local resizing, rotation and colour changes affect that placement. Editing the inventory must not silently resize existing layouts: offer an explicit update action with a preview of affected placements.
+
+### 2. Worksheet tabs for alternative layouts
+
+Treat a session as the open project and a worksheet as a named layout tab inside it. Create, rename, duplicate, switch and remove worksheets so alternatives remain available without replacing the current arrangement. Each worksheet owns its furniture placements, rulers and view settings. A duplicated worksheet begins with the same arrangement and can then change independently.
+
+For the first version, worksheets share one blueprint, architectural geometry, scale, room definitions and inventory. Make that shared scope visible: editing architecture or calibration affects every worksheet. Different homes belong in separate projects. Persist all worksheets and inventory in project JSON, restore the active worksheet on reopen, and isolate layout undo/redo so switching tabs cannot undo another layout. Keep legacy single-layout projects compatible by loading their furniture and rulers into the first worksheet. Export the active worksheet with its name and exact geometry; retain a full-project export for all alternatives.
+
+### 3. Editable product URL import
+
+Proposed local API: `POST /api/furniture/imports` with a product `url` and optional variant identifier. Fetch the specified product page and return a draft inventory entry for review rather than immediately placing it or treating it as verified.
+
+Extraction priorities:
+
+1. Overall furniture dimensions, units and their meaning: width, depth, height, diameter; distinguish assembled size from packaging, seat size and delivery dimensions.
+2. Colour, upholstery and finish as described by the retailer. A colour name does not establish an exact paint or fabric RGB value.
+3. Product name, category, source URL and selected variant for identification and later correction.
+
+Use structured product data where available, then supported retailer adapters/page parsing. Preserve the original values and supporting source text for each extracted field, plus extraction method and review status. When sizes or finishes vary, let the user choose the specific variant. Do not guess axis order, invent missing dimensions, or combine measurements from different variants. Conflicting, incomplete, blocked or unsupported pages should return an understandable result with manual entry available.
+
+Show a review form before saving the draft into the inventory. Every imported value can be corrected; distinguish imported, user-corrected and assumed values. Re-import should show changes for acceptance and preserve corrections unless the user explicitly replaces them. Keep the selected variant and provenance in saved projects and AI review exports.
+
+The existing server serves static files only. Implementing this endpoint requires an explicit fetch service: bounded response sizes/timeouts, public HTTP(S) destinations only, checks against local/private addresses at each redirect, and no execution of page scripts or page-provided instructions. Define whether importing is local or hosted before implementation; only the supplied product URL needs to reach the retailer, not the apartment plan. Start with a small, documented retailer support list and manual fallback rather than promising extraction from every website.
+
+### 4. Later: more faithful product shapes
+
+Initially map categories to the existing schematic sofa, chaise sofa, TV, cabinet, chair, table, bookshelf and bed shapes using reviewed dimensions. Keep those shapes visibly schematic. Detailed silhouettes, upholstery, materials and manufacturer 3D/CAD assets are a separate future phase; URL import does not guarantee an exact product model.
+
+### Delivery order and acceptance
+
+Deliver manual inventory first, worksheet tabs second, reviewed URL import third, and product-specific shapes later. Final API and persistence contracts should be designed when implementing each phase.
+
+The flow is complete when a user can manually create or import a piece, correct its dimensions/finish, save it to inventory, place independent copies in two worksheets, switch between them without losing edits, and save/reopen/export each arrangement. Unknown measurements must remain visible and inventory changes must never silently alter an existing layout.
