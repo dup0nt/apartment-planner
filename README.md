@@ -1,3 +1,20 @@
+## Interactive blueprint viewer
+
+Run `python3 serve.py` from this repository, then open http://127.0.0.1:8765/. Use `--port 8766` to change the port or `--open` to open your browser. No npm install, API key, cloud upload or external library is needed. Python serves static files locally; images and project data stay in your browser unless you explicitly save them.
+
+- Upload PNG, JPG or WebP (up to 12 MB and 20 megapixels).
+- Use **Scale**: click both ends of a printed dimension, enter metres and apply. Both axes assumes an undistorted scan; separate X/Y calibration supports stretched references.
+- Use **Wall** to click endpoints, then add **Door** or **Window** openings. Select a wall to move endpoints or edit length, height, thickness and opening properties. Hinge and swing are explicit.
+- **Measure** preserves the original printed label. Amber measurement chips flag disagreement with the calibrated trace; source labels never silently change geometry.
+- Orbit and zoom the synchronized 3D view. Cutaway changes display only. Save a portable JSON project, reopen it, export a 2D SVG or save a 3D image.
+- Optional **Suggest lines** finds ink runs, not recognised walls. It may include text, fixtures and neighbouring apartments. Review every candidate.
+
+The included A–B example is an illustrative manual trace of the corrected uploaded plan, not a verified survey. Its X/Y calibration uses living-room labels 3.98 m and 4.85 m. Other source dimensions disagree with those proportions. Door dimensions/hinges, glazing operation, heights and thicknesses require checking. Balconies and built-in wardrobes are not modelled. The app does not automatically interpret text, partition apartments, rectify perspective or infer missing measurements. Raster tracing alone cannot guarantee exact architecture. 3D geometry is reproducible from saved JSON; screenshot pixels may differ between GPUs.
+
+The viewer uses `web/demo.json` / `web/demo-image.js` as a separate pixel-space example. The legacy metre-space planner below remains unchanged. `web/demo-image.js` is the JSON project wrapped as `window.BLUEPRINT_DEMO=<JSON>;` for dependency-free browser loading. Keep both demo representations synchronized.
+
+Validation: Python 3.11+ and Node.js are required for `python3 check.py`. Set `NODE_BINARY` if Node is outside PATH. This runs governance, legacy geometry and interactive geometry tests.
+
 # Deterministic apartment planner
 
 A local, dependency-free Python 3 repository. One explicit geometry source drives a labelled 2D SVG, interactive 3D HTML viewer and real 3D OBJ mesh. No AI image generation, external CDN, API key or randomness. Same inputs and program version produce byte-identical files (tested).
@@ -69,3 +86,40 @@ python3 check.py
 ```
 
 The renderer retains its existing Python requirements; Python 3.11 is needed only for standard-library TOML validation of agent profiles.
+
+### Arrange furniture
+The furniture bar adds **Straight sofa**, **Sofa + chaise**, **TV** and **TV unit**. Choose one, then click the blueprint. With Select active, drag a piece in 2D and see its 3D position update. Select it to edit overall width, depth, height and bottom elevation in centimetres; rotate with the button, degree field or `R` key. The chaise has left/right placement, width and total depth controls. Left/right refers to the unrotated plan, where the sofa faces downward.
+
+Sofas include arms, back, seat cushions and legs; chaise sofas have an actual L footprint. TVs include a thin screen and stand; cabinets include fronts, top and legs. These are schematic shapes, not exact product models. Furniture chips beneath the inspector select overlapping pieces and focus the plan. Use Focus in 3D to inspect the selected piece; Reset view shows the whole model. Save/open project, undo/redo and 2D/3D exports include the furniture. Old project files load without furniture. Clear traces leaves furniture intact; use Delete selected to remove pieces.
+
+Furniture can overlap walls or doors: inspect clearances before trusting a layout. Uploaded-plan calibration also controls its apparent size relative to architecture. TV bottom elevation can be set to the cabinet height; the two pieces remain independently movable.
+
+Furniture defaults: both sofa shapes use a 210 × 110 cm base; the chaise retains an adjustable illustrative 160 cm total depth. TV: 55-inch 16:9 visible screen, schematic bezel/stand, bottom elevation 56 cm. TV unit: 179 × 42 × 56 cm. Existing placed/saved furniture retains its custom dimensions. Sofa height remains illustrative at 84 cm.
+
+### Focus on rooms
+In **Room focus**, select one or several rooms, enable **Hide other rooms**, then choose **Focus selected**. Both the blueprint and 3D view isolate the selection, including the living room's recess. **Show all** restores the whole plan. Select all six apartment rooms to mask the neighbouring apartment in the source image.
+
+The supplied A–B example includes living/dining, kitchen, hall, bathroom and two bedroom regions. These are manually outlined view masks. For a different upload, choose **Outline room**, click each boundary corner, enter a name in the inspector and choose **Finish room**. Use Edit to rename a region, or Delete selected and redraw to change its outline. Room definitions and selection save with the project. Old saved projects remain compatible.
+
+Hiding rooms does not delete architecture or furniture. Shared walls extending outside the selection must be edited in Show all. Masked exports include only the selected view; JSON always retains the whole project. Room masks cut existing surfaces without adding cap faces; this is a viewing effect, not a remodel.
+
+The 3D view starts horizontally mirrored. Toggle **Mirror view** to switch back. This changes camera projection only; architecture, door hinges, furniture and 2D coordinates stay unchanged. Measurement text remains readable and saved 3D images match the view.
+
+### Wall-aligned ruler
+Choose **Ruler**, click the start point and move toward the endpoint to see the live distance in metres and centimetres. Click again to save. Alignment follows the nearest wall automatically, or the wall selected before activating Ruler. The inspector can choose another reference wall, plan axes, parallel only or perpendicular only. Alignment is calculated in metres, including with stretched X/Y calibration. Click the sofa front and TV screen plane to measure that gap; choose an eye-position point if measuring viewing distance instead.
+
+Saved rulers appear in both views, measurement chips and exports, support undo/delete and persist in JSON. They are derived distances, separate from transcribed source labels. Their endpoints are fixed points, not attached to furniture; remeasure after moving pieces. Accuracy depends on calibration and where you click. Rulers cannot cross hidden rooms while masking is active.
+
+### Export for AI comparison
+Choose **Export for AI**, name the arrangement (for example `Option A — sofa near window`) and download the review PNG. It combines the current room scope in 2D, the current 3D camera, numbered furniture, overall dimensions, positions, source measurements/rulers and accuracy notes. Mirrored 3D is explicitly labelled; use 2D for orientation. Overlapping furniture anchors share a number badge (for example TV and its cabinet).
+
+Use **Download exact JSON** alongside the PNG when asking an AI to compare alternatives. JSON includes the full project and review metadata; positions remain exact source pixels with X/Y metre conversion. PNG lists at most40 furniture items and30 measurements, with explicit overflow notes; JSON retains all. The PNG is not proof of measured clearances. Export each arrangement under a distinct name, then supply the images (and ideally JSON files) together. Nothing is sent to an AI automatically. Saving an AI export does not mark the editable project as saved.
+
+### More furniture
+The library includes dining chairs, round tables, rectangular tables with rounded corners, bookshelves and beds. All support dragging, rotation, colour, metric resizing, duplication, saved projects and AI exports. Use Duplicate for additional chairs. Table shape can switch in the inspector; round tables have a single Diameter control. Bookshelves have an adjustable count of vertical compartments. Bed height includes the headboard.
+
+New starting sizes (W × D × H): chair50×55×82cm; round table110cm diameter×75cm high; rounded rectangular table140×80×75cm; bookshelf80×30×200cm; bed150×200×100cm. These are editable starting points, not room-fit recommendations. Chairs need separate pull-out clearance; bedheadboard and shelf details are schematic.
+
+Living-room glazing is floor-to-ceiling following the user correction; its absolute height uses the provisional wall height. The original demo and legacy metre-space data match. Reopening a saved demo with the exact former living-window defaults (85cm sill,130cm high) upgrades only that opening and marks the project unsaved; custom opening dimensions stay intact. Other windows can use Make floor-to-ceiling in their inspector.
+
+After drawing a ruler, Select mode activates automatically. Click its line or label to select it, then use Delete ruler above the plan, Delete selected, or the keyboard Delete key. Undo restores it.
